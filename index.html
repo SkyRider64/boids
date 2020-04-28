@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>Boids</title>
+    <link rel="stylesheet" href="./boids.css" />
     <script src="./boids.js"></script>
     <style type="text/css">
       body {
@@ -14,5 +15,50 @@
   </head>
   <body>
     <canvas id="boids" width="150" height="150"></canvas>
+    <div id="controls">
+      <div class="slidecontainer">
+        <span class="control-title">Coherence</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="coherence">
+      </div>
+      
+      <div class="slidecontainer">
+        <span class="control-title">Separation</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="separation">
+      </div>
+      
+      <div class="slidecontainer">
+        <span class="control-title">Alignment</span>
+        <input type="range" min="1" max="100" value="50" class="slider" id="alignment">
+      </div>
+      
+      <div class="slidecontainer">
+        <span class="control-title">Range</span>
+        <input type="range" min="1" max="150" value="75" class="slider" id="range">
+      </div>
+      
+      <div class="slidecontainer">
+        <span class="control-title">Speed</span>
+        <input type="range" min="1" max="30" value="15" class="slider" id="speed">
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('coherence').addEventListener('input', function(){
+        centeringFactor = this.value / 10000;
+      });
+      document.getElementById('separation').addEventListener('input', function(){
+        avoidFactor = this.value / 1000;
+      });
+      document.getElementById('alignment').addEventListener('input', function(){
+        matchingFactor = this.value / 1000;
+      });
+      document.getElementById('range').addEventListener('input', function(){
+        visualRange = this.value;
+      });
+      document.getElementById('speed').addEventListener('input', function(){
+        speedLimit = this.value;
+      });
+    </script>
+
   </body>
 </html>
